@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Environmental Issues Reporter</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Eco-Connect</h1>
+        <p id="status-message" class="status-message">Report environmental issues in your community</p>
+        <div class="key-indicator">Press <span id="key-display">any key</span></div>
+    </header>
+    
+    <nav class="tabs-container">
+        <div class="tab active" id="report-tab">Report Issue</div>
+        <div class="tab" id="view-tab">View Issues</div>
+        <div class="tab" id="gallery-tab">Image Gallery</div>
+    </nav>
+    
+    <main>
+        <div class="container" id="report-container">
+            <section class="report-form">
+                <h2>Report an Issue</h2>
+                <form id="issue-form">
+                    <div class="form-group">
+                        <label for="issue-title">Issue Title:</label>
+                        <input type="text" id="issue-title" placeholder="Brief description of the issue">
+                        <span class="validation-message" id="title-validation"></span>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="issue-location">Location:</label>
+                        <input type="text" id="issue-location" placeholder="Street address, park name, or coordinates">
+                        <span class="validation-message" id="location-validation"></span>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="issue-type">Issue Type:</label>
+                        <select id="issue-type">
+                            <option value="">-- Select Type --</option>
+                            <option value="Pollution">Pollution</option>
+                            <option value="Waste Dumping">Waste Dumping</option>
+                            <option value="Deforestation">Deforestation</option>
+                            <option value="Wildlife Danger">Wildlife Danger</option>
+                            <option value="Water Contamination">Water Contamination</option>
+                            <option value="Other">Other</option>
+                        </select>
+                        <span class="validation-message" id="type-validation"></span>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="reporter-email">Your Email:</label>
+                        <input type="email" id="reporter-email" placeholder="your.email@example.com">
+                        <span class="validation-message" id="email-validation"></span>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="reporter-password">Create Password:</label>
+                        <input type="password" id="reporter-password" placeholder="Min 8 characters (for editing reports later)">
+                        <span class="validation-message" id="password-validation"></span>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="issue-description">Description:</label>
+                        <textarea id="issue-description" placeholder="Provide details about the environmental issue..."></textarea>
+                        <span class="validation-message" id="description-validation"></span>
+                    </div>
+                    
+                    <div class="form-group">
+                        <button type="submit" id="submit-btn">Submit Report</button>
+                        <button type="button" id="clear-btn">Clear Form</button>
+                    </div>
+                </form>
+            </section>
+            
+            <section class="form-tips">
+                <h3>Reporting Tips</h3>
+                <ul>
+                    <li>Be specific about locations</li>
+                    <li>Include time and date of observation</li>
+                    <li>Mention any wildlife affected</li>
+                    <li>Note if this is an ongoing issue</li>
+                </ul>
+                <div class="secret-btn" id="secret-btn">Click me twice for a surprise!</div>
+            </section>
+        </div>
+        
+        <div class="container hidden" id="issues-container">
+            <section class="reports-display">
+                <h2>Reported Issues</h2>
+                <div class="filter-bar">
+                    <input type="text" id="search-issues" placeholder="Search issues...">
+                    <select id="filter-type">
+                        <option value="">All Types</option>
+                        <option value="Pollution">Pollution</option>
+                        <option value="Waste Dumping">Waste Dumping</option>
+                        <option value="Deforestation">Deforestation</option>
+                        <option value="Wildlife Danger">Wildlife Danger</option>
+                        <option value="Water Contamination">Water Contamination</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+                <div id="issues-list">
+                    <p class="no-issues">No issues reported yet. Be the first to report!</p>
+                </div>
+            </section>
+        </div>
+        
+        <div class="container hidden" id="gallery-container">
+            <section class="image-gallery">
+                <h2>Environmental Image Gallery</h2>
+                <div class="gallery-controls">
+                    <button id="prev-btn">Previous</button>
+                    <button id="next-btn">Next</button>
+                </div>
+                <div class="slideshow-container">
+                    <div class="slideshow-slide active">
+                        <img src="https://i.pinimg.com/736x/b3/fa/35/b3fa353ef72839c30d69a88176eb30f4.jpg" alt="Environmental conservation efforts">
+                        <div class="slide-caption">Conservation efforts in local forests</div>
+                    </div>
+                    <div class="slideshow-slide">
+                        <img src="/api/placeholder/600/400" alt="Ocean cleanup">
+                        <div class="slide-caption">Ocean cleanup initiatives</div>
+                    </div>
+                    <div class="slideshow-slide">
+                        <img src="/api/placeholder/600/400" alt="Wildlife protection">
+                        <div class="slide-caption">Wildlife protection zones</div>
+                    </div>
+                    <div class="slideshow-slide">
+                        <img src="/api/placeholder/600/400" alt="Waste management">
+                        <div class="slide-caption">Community waste management programs</div>
+                    </div>
+                </div>
+                <div class="slideshow-dots">
+                    <span class="dot active" data-slide="0"></span>
+                    <span class="dot" data-slide="1"></span>
+                    <span class="dot" data-slide="2"></span>
+                    <span class="dot" data-slide="3"></span>
+                </div>
+            </section>
+        </div>
+    </main>
+    
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2 id="modal-title">Modal Title</h2>
+            <div id="modal-body">Modal content goes here</div>
+        </div>
+    </div>
+    
+    <div class="accordion-container">
+        <div class="accordion">
+            <div class="accordion-item">
+                <div class="accordion-header">About This Project</div>
+                <div class="accordion-content">
+                    This environmental issues reporter helps communities identify and address environmental problems. By reporting issues, we can work together to create a cleaner, healthier planet.
+                </div>
+            </div>
+            <div class="accordion-item">
+                <div class="accordion-header">How To Report</div>
+                <div class="accordion-content">
+                    Fill out the form with details about the environmental issue you've observed. Be specific about location, type of issue, and provide a clear description. Your email is required for verification purposes only.
+                </div>
+            </div>
+            <div class="accordion-item">
+                <div class="accordion-header">Privacy Policy</div>
+                <div class="accordion-content">
+                    Your personal information is kept confidential. Email addresses are used only for verification and follow-up on reported issues. We never share your data with third parties.
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <footer>
+        <p>&copy; 2025 Environmental Issues Reporter | Making our world cleaner together</p>
+        <button class="theme-toggle" id="theme-toggle">🌓</button>
+        <div class="long-press-element" id="long-press">Press and hold for 2 seconds</div>
+    </footer>
+    
+    <script src="script.js"></script>
+</body>
+</html>
